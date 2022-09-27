@@ -48,9 +48,9 @@ class TabellerEnhetsTester {
 
 	@Test
 	void testSummer() {
-		assertEquals(11, Tabeller.summer(tabell1));
-		assertEquals(1, Tabeller.summer(tabell2));
-		assertEquals(0, Tabeller.summer(tabell3));
+		assertEquals(11, Tabeller.whileSummer(tabell1));
+		assertEquals(1, Tabeller.forSummer(tabell2));
+		assertEquals(0, Tabeller.uforSummer(tabell3));
 	}
 
 	@Test
