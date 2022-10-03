@@ -72,8 +72,7 @@ public class Tabeller {
 		boolean funnet = false;
 		
 		while(pos<tabell.length && !funnet) {
-			if (tabell[pos] == tall)
-				funnet = true;
+			funnet = tabell[pos] == tall;
 			pos++;
 		}
 		
@@ -83,19 +82,17 @@ public class Tabeller {
 	// e)
 	public static int posisjonTall(int[] tabell, int tall) {
 		
-		int pos = 0;
-		boolean funnet = false;
-		
-		while(pos<tabell.length && !funnet) {
-			if (tabell[pos] == tall)
-				funnet = true;
-			pos++;
-		}
-		
-		if (!funnet)
-			pos = 0;
-		
-		return (pos - 1);
+        int i = 0;
+        boolean match = false;
+        int pos = -1;
+        
+        while (!match && i < tabell.length) {
+            match = tabell[i] == tall;
+            pos = match? i : -1;
+            i++;
+        }
+
+        return pos;
 	}
 
 	// f)
@@ -116,8 +113,7 @@ public class Tabeller {
 		boolean sortert = true;
 		
 		while (sortert && pos<tabell.length) {
-			if (tabell[pos]<tabell[pos-1])
-				sortert = false;
+			sortert = !(tabell[pos]<tabell[pos-1]);
 			pos++;	
 		}
 		
@@ -127,19 +123,14 @@ public class Tabeller {
 	// h)
 	public static int[] settSammen(int[] tabell1, int[] tabell2) {
 
-		int[] nytabell = new int [tabell1.length + tabell2.length];
-		int pos = 0;
-		
-		for (int i=0; i<nytabell.length; i++) {
-			if (i < tabell1.length) {
-				nytabell[i] = tabell1[i];
-			} else {
-				nytabell[i] = tabell2[pos];
-				pos++;
-			}
-		}
+        int totalLength = tabell1.length + tabell2.length;
+        int[] longArray = new int[totalLength];
 
-		return nytabell;
+        for(int i = 0; i<totalLength; i++){
+            longArray[i] = i < tabell1.length? tabell1[i] : tabell2[i- tabell1.length];
+        }
+
+        return longArray;
 	}
 }
 

@@ -11,7 +11,6 @@ public class Matriser {
 			for (int kolonne : rad) {
 				System.out.print(kolonne + " ");
 			}
-			
 			System.out.println();
 		}
 		
